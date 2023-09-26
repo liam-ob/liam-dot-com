@@ -4,7 +4,7 @@ import {
     ChevronDownIcon,
     PhoneIcon,
     PlayCircleIcon,
-} from "@heroicons/react/solid";
+} from "@heroicons/react/20/solid";
 import {
     ArrowPathIcon,
     ChartPieIcon,
