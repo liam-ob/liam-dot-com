@@ -1,118 +1,108 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import {
-    ChevronDownIcon,
-    PhoneIcon,
-    PlayCircleIcon,
-} from "@heroicons/react/20/solid";
-import {
-    ArrowPathIcon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-} from "@heroicons/react/24/outline";
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
-const solutions = [
-    {
-        name: "Analytics",
-        description: "Get a better understanding of your traffic",
-        href: "#",
-        icon: ChartPieIcon,
-    },
-    {
-        name: "Engagement",
-        description: "Speak directly to your customers",
-        href: "#",
-        icon: CursorArrowRaysIcon,
-    },
-    {
-        name: "Security",
-        description: "Your customers' data will be safe and secure",
-        href: "#",
-        icon: FingerPrintIcon,
-    },
-    {
-        name: "Integrations",
-        description: "Connect with third-party tools",
-        href: "#",
-        icon: SquaresPlusIcon,
-    },
-    {
-        name: "Automations",
-        description: "Build strategic funnels that will convert",
-        href: "#",
-        icon: ArrowPathIcon,
-    },
-];
-const callsToAction = [
-    { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-    { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
+export interface Navigation {
+    name: string;
+    href: string;
+    current: boolean;
+}
+interface NavBarProps {
+    navigation: Navigation[];
+}
 
-const NavBar = () => {
+function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(" ");
+}
+
+export default function Example({ navigation }: NavBarProps) {
     return (
-        <>
-            <Popover className="relative">
-                <Popover.Button className="inlne-flex items-center gap-x-1 text-sm font-semibold leading-6">
-                    <span>Liam</span>
-                    <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
-                </Popover.Button>
-
-                <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-200"
-                >
-                    <Popover.Panel className="absolute left-1/2 z-10">
-                        <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-                            <div className="p-4">
-                                {solutions.map((item) => (
-                                    <div
-                                        key={item.name}
-                                        className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
-                                    >
-                                        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                            <item.icon
-                                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-                                        <div>
-                                            <a
-                                                href={item.href}
-                                                className="font-semibold text-gray-900"
-                                            >
-                                                {item.name}
-                                                <span className="absolute inset-0" />
-                                            </a>
-                                            <p className="mt-1 text-gray-600">
-                                                {item.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                {callsToAction.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
-                                    >
-                                        <item.icon
-                                            className="h-5 w-5 flex-none text-gray-400"
+        <Disclosure as="nav" className="bg-gray-800">
+            {({ open }) => (
+                <>
+                    <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                        <div className="relative flex h-16 items-center justify-between">
+                            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                                {/* Mobile menu button*/}
+                                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <span className="absolute -inset-0.5" />
+                                    <span className="sr-only">
+                                        Open main menu
+                                    </span>
+                                    {open ? (
+                                        <XMarkIcon
+                                            className="block h-6 w-6"
                                             aria-hidden="true"
                                         />
-                                        {item.name}
-                                    </a>
-                                ))}
+                                    ) : (
+                                        <Bars3Icon
+                                            className="block h-6 w-6"
+                                            aria-hidden="true"
+                                        />
+                                    )}
+                                </Disclosure.Button>
+                            </div>
+                            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                                <div className="flex flex-shrink-0 items-center">
+                                    <img
+                                        className="h-8 w-auto"
+                                        src="//icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/home-page-161.png"
+                                        alt="Your Company"
+                                    />
+                                </div>
+                                <div className="hidden sm:ml-6 sm:block">
+                                    <div className="flex space-x-4">
+                                        {navigation.map((item) => (
+                                            <a
+                                                key={item.name}
+                                                href={item.href}
+                                                className={classNames(
+                                                    item.current
+                                                        ? "bg-gray-900 text-white"
+                                                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                                    "rounded-md px-3 py-2 text-sm font-medium"
+                                                )}
+                                                aria-current={
+                                                    item.current
+                                                        ? "page"
+                                                        : undefined
+                                                }
+                                            >
+                                                <Link to={item.href + "/"}>
+                                                    {item.name}
+                                                </Link>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </Popover.Panel>
-                </Transition>
-            </Popover>
-        </>
-    );
-};
+                    </div>
 
-export default NavBar;
+                    <Disclosure.Panel className="sm:hidden">
+                        <div className="space-y-1 px-2 pb-3 pt-2">
+                            {navigation.map((item) => (
+                                <Disclosure.Button
+                                    key={item.name}
+                                    as="a"
+                                    href={item.href}
+                                    className={classNames(
+                                        item.current
+                                            ? "bg-gray-900 text-white"
+                                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                        "block rounded-md px-3 py-2 text-base font-medium"
+                                    )}
+                                    aria-current={
+                                        item.current ? "page" : undefined
+                                    }
+                                >
+                                    {item.name}
+                                </Disclosure.Button>
+                            ))}
+                        </div>
+                    </Disclosure.Panel>
+                </>
+            )}
+        </Disclosure>
+    );
+}
