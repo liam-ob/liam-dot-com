@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import NavBar from "./components/NavBar";
-import Root, { navigationItems } from "./routes/Root.tsx";
-import Contact from "./routes/Contact.tsx";
 
-import ErrorPage from "./pages/ErrorPage.tsx";
-import HomePage from "./pages/HomePage.tsx";
+import Root from "./routes/Root.tsx";
+import Contact from "./routes/Contact.tsx";
+import Projects from "./routes/Projects.tsx";
+
+import ErrorPage from "./routes/pages/ErrorPage.tsx";
+import HomePage from "./routes/pages/HomePage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "contact/",
                 element: <Contact />,
+            },
+            {
+                path: "projects/",
+                element: <Projects />,
             },
         ],
     },

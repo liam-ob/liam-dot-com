@@ -2,4 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.tab-slide {
+    width: 100px;
+}
 
+  
+.tab-selected {
+    transform: translateX(0%); /* Move the selected tab content to the visible area */
+}

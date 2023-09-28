@@ -43,19 +43,21 @@ export default function Example({ navigation }: NavBarProps) {
                                 </Disclosure.Button>
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="flex flex-shrink-0 items-center">
-                                    <img
-                                        className="h-8 w-auto"
-                                        src="//icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/home-page-161.png"
-                                        alt="Your Company"
-                                    />
-                                </div>
+                                <Link to="home/">
+                                    <div className="flex flex-shrink-0 items-center">
+                                        <img
+                                            className="h-8 w-auto"
+                                            src="//icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/home-page-161.png"
+                                            alt="Home"
+                                        />
+                                    </div>
+                                </Link>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <Link
+                                                to={item.href + "/"}
                                                 key={item.name}
-                                                href={item.href}
                                                 className={classNames(
                                                     item.current
                                                         ? "bg-gray-900 text-white"
@@ -68,10 +70,8 @@ export default function Example({ navigation }: NavBarProps) {
                                                         : undefined
                                                 }
                                             >
-                                                <Link to={item.href + "/"}>
-                                                    {item.name}
-                                                </Link>
-                                            </a>
+                                                {item.name}
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>

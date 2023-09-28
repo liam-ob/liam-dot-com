@@ -4,12 +4,12 @@ import { Outlet, Link } from "react-router-dom";
 export const navigationItems: Navigation[] = [
     {
         name: "Home",
-        href: "#",
+        href: "home",
         current: true,
     },
     {
         name: "Projects",
-        href: "#",
+        href: "projects",
         current: false,
     },
     {
@@ -19,11 +19,11 @@ export const navigationItems: Navigation[] = [
     },
     {
         name: "Contact",
-        href: "/contact/",
+        href: "contact",
         current: false,
     },
     {
-        name: "blog",
+        name: "Blog",
         href: "#",
         current: false,
     },
