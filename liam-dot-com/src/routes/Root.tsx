@@ -1,5 +1,5 @@
 import NavBar, { Navigation } from "../components/NavBar";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export const navigationItems: Navigation[] = [
     {
@@ -14,7 +14,7 @@ export const navigationItems: Navigation[] = [
     },
     {
         name: "Games",
-        href: "#",
+        href: "games",
         current: false,
     },
     {
