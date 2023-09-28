@@ -7,6 +7,7 @@ import Root from "./routes/Root.tsx";
 import Contact from "./routes/Contact.tsx";
 import Projects from "./routes/Projects.tsx";
 import GamesRoute from "./routes/Games.tsx";
+import BlogRoute from "./routes/Blogs.tsx";
 
 import ErrorPage from "./routes/pages/ErrorPage.tsx";
 import HomePage from "./routes/pages/HomePage.tsx";
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "games/",
                 element: <GamesRoute />,
+            },
+            {
+                path: "blog/",
+                element: <BlogRoute />,
             },
         ],
     },

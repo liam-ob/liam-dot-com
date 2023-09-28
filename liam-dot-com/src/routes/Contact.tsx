@@ -59,7 +59,7 @@ export default function Contact() {
                                         return classNames(
                                             "tab-slide text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium",
                                             selected
-                                                ? "shadow bg-gray-800 tab-slide-selected tab-selected"
+                                                ? "shadow bg-gray-800 tab-slide-selected tab-selected text-white"
                                                 : "bg-gray-500 tab-hidden"
                                         );
                                     }}

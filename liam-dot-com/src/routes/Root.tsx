@@ -24,7 +24,7 @@ export const navigationItems: Navigation[] = [
     },
     {
         name: "Blog",
-        href: "#",
+        href: "blog/",
         current: false,
     },
 ];
