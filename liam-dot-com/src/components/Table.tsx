@@ -13,7 +13,7 @@ const Table = ({ rows }: TableProps) => {
             <table className="table-auto min-w-full text-left text-sm font-light">
                 <thead className="border-b font-medium dark:border-neutral-500">
                     <tr>
-                        {rows.slice(0, 1).map((row, rowIndex) => (
+                        {rows.slice(0, 1).map((row) => (
                             <>
                                 {row.map((data, colIndex) => (
                                     <th
