@@ -10,7 +10,7 @@ interface TableProps {
 const Table = ({ rows }: TableProps) => {
     return (
         <>
-            <table className="table-auto min-w-full text-left text-sm font-light">
+            <table className="min-w-full text-left font-light">
                 <thead className="border-b font-medium dark:border-neutral-500">
                     <tr>
                         {rows.slice(0, 1).map((row) => (
