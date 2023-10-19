@@ -9,13 +9,14 @@ export interface Navigation {
 }
 interface NavBarProps {
     navigation: Navigation[];
+    handleClick: (href: string) => void;
 }
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
-export default function Example({ navigation }: NavBarProps) {
+export default function Example({ navigation, handleClick }: NavBarProps) {
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -68,6 +69,9 @@ export default function Example({ navigation }: NavBarProps) {
                                                     item.current
                                                         ? "page"
                                                         : undefined
+                                                }
+                                                onClick={() =>
+                                                    handleClick(item.name)
                                                 }
                                             >
                                                 {item.name}

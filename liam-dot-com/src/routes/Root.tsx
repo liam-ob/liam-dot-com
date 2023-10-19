@@ -1,5 +1,6 @@
 import NavBar, { Navigation } from "../components/NavBar";
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
 export const navigationItems: Navigation[] = [
     {
@@ -30,9 +31,47 @@ export const navigationItems: Navigation[] = [
 ];
 
 export default function Root() {
+    const [current, setCurrent] = useState("home");
+
+    const navigationItems: Navigation[] = [
+        {
+            name: "Home",
+            href: "home",
+            current: current === "Home",
+        },
+        {
+            name: "Projects",
+            href: "projects",
+            current: current === "Projects",
+        },
+        {
+            name: "Games",
+            href: "games",
+            current: current === "Games",
+        },
+        {
+            name: "Contact",
+            href: "contact",
+            current: current === "Contact",
+        },
+        {
+            name: "Blog",
+            href: "blog/",
+            current: current === "Blog",
+        },
+    ];
+
+    const handleNavigationClick = (href: string): void => {
+        console.log("Clicked " + href);
+        setCurrent(href);
+    };
+
     return (
         <>
-            <NavBar navigation={navigationItems} />
+            <NavBar
+                navigation={navigationItems}
+                handleClick={handleNavigationClick}
+            />
             <div id="detail">
                 <Outlet />
             </div>
