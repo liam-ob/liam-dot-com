@@ -1,3 +1,5 @@
+import List from "../components/List";
+
 const BlogRoute = () => {
     return (
         <>
@@ -6,6 +8,8 @@ const BlogRoute = () => {
                     Blog
                 </h1>
             </div>
+            {}
+            <List listItems={} />
         </>
     );
 };
