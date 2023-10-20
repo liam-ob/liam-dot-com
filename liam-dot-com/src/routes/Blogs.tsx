@@ -1,4 +1,19 @@
 import List from "../components/List";
+import { listObject } from "../components/List";
+
+const blogPostList: listObject[] = [
+    {
+        id: 1,
+        name: "myblog",
+        purpose: "test the blog post",
+        role: "author",
+        link: "https://liamdotcom.vercel.app/blog/myblog",
+        linkText: "myblog",
+        imageUrl: "my link",
+        dateStarted: "2021-08-01",
+        dateFinished: "2021-08-01",
+    },
+];
 
 const BlogRoute = () => {
     return (
@@ -9,7 +24,7 @@ const BlogRoute = () => {
                 </h1>
             </div>
             {}
-            <List listItems={} />
+            <List listItems={blogPostList} />
         </>
     );
 };
